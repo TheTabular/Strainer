@@ -63,6 +63,10 @@ function App() {
         flavors: selectedFlavors,
         types: selectedTypes,
         description: description,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
       setTopStrains(response.data.top_strains);
     } catch (error) {

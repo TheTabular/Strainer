@@ -58,7 +58,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://44.202.245.226/recommend', {
+      const response = await axios.post('/recommend', {
         effects: selectedEffects,
         flavors: selectedFlavors,
         types: selectedTypes,
@@ -66,6 +66,9 @@ function App() {
       }, {
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*', // or the specific origin of your Amplify app
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+          'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
         },
       });
       setTopStrains(response.data.top_strains);

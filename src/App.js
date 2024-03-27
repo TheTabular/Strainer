@@ -58,7 +58,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://18.207.166.17/recommend', {
+      const response = await axios.post('https://StrainerServiceLB-1153351773.us-east-1.elb.amazonaws.com/recommend', {
         effects: selectedEffects,
         flavors: selectedFlavors,
         types: selectedTypes,

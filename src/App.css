@@ -1,38 +1,193 @@
-.App {
+body {
+  background-color: #0d420d;
+  color: #fff;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
   text-align: center;
+  font-size: 36px;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.options-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.option-group {
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.option-item {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* Checkbox styles */
+.option-item input[type='checkbox'] + label {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 2px solid #000000;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  color: #000000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.option-item input[type='checkbox'] {
+  display: none;
+}
+
+/* Flavor checkbox background colors */
+.option-item input[type='checkbox'][id='flavor-Ammonia'] + label { background-color: #9FE2BF; }
+.option-item input[type='checkbox'][id='flavor-Apple'] + label { background-color: #6CC417; }
+.option-item input[type='checkbox'][id='flavor-Apricot'] + label { background-color: #FFBF00; }
+.option-item input[type='checkbox'][id='flavor-Berry'] + label { background-color: #FF69B4; }
+.option-item input[type='checkbox'][id='flavor-Blue'] + label { background-color: #0000FF; }
+.option-item input[type='checkbox'][id='flavor-Blueberry'] + label { background-color: #4169E1; }
+.option-item input[type='checkbox'][id='flavor-Butter'] + label { background-color: #EEDC82; }
+.option-item input[type='checkbox'][id='flavor-Cheese'] + label { background-color: #FFD700; }
+.option-item input[type='checkbox'][id='flavor-Chemical'] + label { background-color: #9370DB; }
+.option-item input[type='checkbox'][id='flavor-Chestnut'] + label { background-color: #CD5C5C; }
+.option-item input[type='checkbox'][id='flavor-Citrus'] + label { background-color: #FFA500; }
+.option-item input[type='checkbox'][id='flavor-Coffee'] + label { background-color: #6F4E37; }
+.option-item input[type='checkbox'][id='flavor-Diesel'] + label { background-color: #696969; }
+.option-item input[type='checkbox'][id='flavor-Earthy'] + label { background-color: #A0522D; }
+.option-item input[type='checkbox'][id='flavor-Flowery'] + label { background-color: #FF1493; }
+.option-item input[type='checkbox'][id='flavor-Fruit'] + label { background-color: #FF6347; }
+.option-item input[type='checkbox'][id='flavor-Grape'] + label { background-color: #800080; }
+.option-item input[type='checkbox'][id='flavor-Grapefruit'] + label { background-color: #FF4500; }
+.option-item input[type='checkbox'][id='flavor-Honey'] + label { background-color: #FFD700; }
+.option-item input[type='checkbox'][id='flavor-Lavender'] + label { background-color: #E6E6FA; }
+.option-item input[type='checkbox'][id='flavor-Lemon'] + label { background-color: #FFFF00; }
+.option-item input[type='checkbox'][id='flavor-Lime'] + label { background-color: #00FF00; }
+.option-item input[type='checkbox'][id='flavor-Mango'] + label { background-color: #FF8C00; }
+.option-item input[type='checkbox'][id='flavor-Menthol'] + label { background-color: #98FB98; }
+.option-item input[type='checkbox'][id='flavor-Mint'] + label { background-color: #8FBC8F; }
+.option-item input[type='checkbox'][id='flavor-Minty'] + label { background-color: #BDFCC9; }
+.option-item input[type='checkbox'][id='flavor-None'] + label { background-color: #808080; }
+.option-item input[type='checkbox'][id='flavor-Nutty'] + label { background-color: #DEB887; }
+.option-item input[type='checkbox'][id='flavor-Orange'] + label { background-color: #FFA500; }
+.option-item input[type='checkbox'][id='flavor-Peach'] + label { background-color: #FFDAB9; }
+.option-item input[type='checkbox'][id='flavor-Pear'] + label { background-color: #D1E231; }
+.option-item input[type='checkbox'][id='flavor-Pepper'] + label { background-color: #000000; color: #FFFFFF; }
+.option-item input[type='checkbox'][id='flavor-Pine'] + label { background-color: #01796F; }
+.option-item input[type='checkbox'][id='flavor-Pineapple'] + label { background-color: #FFFF66; }
+.option-item input[type='checkbox'][id='flavor-Plum'] + label { background-color: #8E4585; }
+.option-item input[type='checkbox'][id='flavor-Pungent'] + label { background-color: #B8860B; }
+.option-item input[type='checkbox'][id='flavor-Rose'] + label { background-color: #FF007F; }
+.option-item input[type='checkbox'][id='flavor-Sage'] + label { background-color: #9DC183; }
+.option-item input[type='checkbox'][id='flavor-Skunk'] + label { background-color: #BFAFB2; }
+.option-item input[type='checkbox'][id='flavor-Spicy/Herbal'] + label { background-color: #8B0000; }
+.option-item input[type='checkbox'][id='flavor-Strawberry'] + label { background-color: #FF0000; }
+.option-item input[type='checkbox'][id='flavor-Sweet'] + label { background-color: #FFC0CB; }
+.option-item input[type='checkbox'][id='flavor-Tar'] + label { background-color: #2F4F4F; }
+.option-item input[type='checkbox'][id='flavor-Tea'] + label { background-color: #D2B48C; }
+.option-item input[type='checkbox'][id='flavor-Tobacco'] + label { background-color: #BC8F8F; }
+.option-item input[type='checkbox'][id='flavor-Tree'] + label { background-color: #228B22; }
+.option-item input[type='checkbox'][id='flavor-Tropical'] + label { background-color: #00CED1; }
+.option-item input[type='checkbox'][id='flavor-Vanilla'] + label { background-color: #F3E5AB; }
+.option-item input[type='checkbox'][id='flavor-Violet'] + label { background-color: #9400D3; }
+.option-item input[type='checkbox'][id='flavor-Woody'] + label { background-color: #5E2612; }
+
+.option-item input[type='checkbox'][id^='effect-'] + label {
+  color: #1c8c1c; /* Green text */
+  background-color: #FFFFFF; /* White background */
+}
+
+/* Effect checkbox checked styles */
+.option-item input[type='checkbox'][id^='effect-']:checked + label {
+  background-color: #1c8c1c; /* Green background when checked */
+  color: #FFFFFF; /* White text when checked */
+}
+
+/* Checkbox hover styles */
+.option-item input[type='checkbox'] + label:hover {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.option-item input[type='checkbox'][id^='flavor-']:checked + label {
+  font-size: 24px;
+  padding: 16px 24px;
+  outline: 2px solid white;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #1c8c1c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #25b325;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+/* Type checkbox background colors */
+.option-item input[type='checkbox'][id='type-Hybrid'] + label {
+  background-color: #8fbc8f; /* Light green */
+}
+
+.option-item input[type='checkbox'][id='type-Indica'] + label {
+  background-color: #9370db; /* Light purple */
+}
+
+.option-item input[type='checkbox'][id='type-Sativa'] + label {
+  background-color: #ffa500; /* Orange */
+}
+
+.option-item input[type='checkbox'][id^='type-']:checked + label {
+  font-size: 24px;
+  padding: 16px 24px;
+  outline: 2px solid white;
 }

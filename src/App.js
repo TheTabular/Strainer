@@ -58,7 +58,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://opensourcesports.xyz/recommend', {
+      const response = await axios.post('https://opensourcesports.xyz/recommend', {
         effects: selectedEffects,
         flavors: selectedFlavors,
         types: selectedTypes,

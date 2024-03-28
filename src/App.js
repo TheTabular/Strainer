@@ -58,18 +58,11 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/recommend', {
+      const response = await axios.post('http://opensourcesports.xyz/recommend', {
         effects: selectedEffects,
         flavors: selectedFlavors,
         types: selectedTypes,
         description: description,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*', // or the specific origin of your Amplify app
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-          'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
-        },
       });
       setTopStrains(response.data.top_strains);
     } catch (error) {

@@ -1,27 +1,19 @@
+html {
+  background-color: #387c38;
+}
+
 body {
-  background-color: #559955;
+  background-color: #387c38;
   color: #fff;
   font-family: 'Helvetica Neue', sans-serif;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: none;
 }
 
 .app {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  position: relative;
-}
-
-.app::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #387c38d0;
-  z-index: -1;
+  background-color: #387c38;
+  border-radius: 10px;
 }
 
 h1 {
@@ -39,7 +31,7 @@ h1 {
 
 .option-group {
   margin-bottom: 20px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   padding: 10px;
@@ -66,7 +58,6 @@ label {
   margin-bottom: 10px;
 }
 
-/* Checkbox styles */
 .option-item input[type='checkbox'] + label {
   display: inline-block;
   padding: 12px 20px;
@@ -75,13 +66,103 @@ label {
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  transition: box-shadow 0.3s;
   color: #000000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.option-item input[type='checkbox']:checked + label {
+  border-width: 4px;
+  padding: 10px 18px;
+  font-size: 30px;
+  padding: 8px 16px;
 }
 
 .option-item input[type='checkbox'] {
   display: none;
+}
+
+.option-item input[type='checkbox'][id^='effect-'] + label {
+  color: #1c8c1c;
+  background-color: #FFFFFF;
+}
+
+.option-item input[type='checkbox'][id^='effect-']:checked + label {
+  background-color: #1c8c1c;
+  color: #FFFFFF;
+  border-color: #000000;
+}
+
+.option-item input[type='checkbox'][id^='flavor-']:checked + label,
+.option-item input[type='checkbox'][id^='type-']:checked + label {
+  border-color: white;
+}
+
+/* Type checkbox background colors */
+.option-item input[type='checkbox'][id='type-Hybrid'] + label {
+  background-color: #8fbc8f; /* Light green */
+}
+
+.option-item input[type='checkbox'][id='type-Indica'] + label {
+  background-color: #9370db; /* Light purple */
+}
+
+.option-item input[type='checkbox'][id='type-Sativa'] + label {
+  background-color: #ffa500; /* Orange */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.recommendation-button {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 2px solid #000000;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  color: #1c8c1c;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.recommendation-button:hover {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.top-strains {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.top-strains h2 {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.top-strains ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.top-strains li {
+  font-size: 18px;
+  margin-bottom: 5px;
 }
 
 /* Flavor checkbox background colors */
@@ -135,101 +216,3 @@ label {
 .option-item input[type='checkbox'][id='flavor-Vanilla'] + label { background-color: #F3E5AB; }
 .option-item input[type='checkbox'][id='flavor-Violet'] + label { background-color: #9400D3; }
 .option-item input[type='checkbox'][id='flavor-Woody'] + label { background-color: #5E2612; }
-
-.option-item input[type='checkbox'][id^='effect-'] + label {
-  color: #1c8c1c; /* Green text */
-  background-color: #FFFFFF; /* White background */
-}
-
-/* Effect checkbox checked styles */
-.option-item input[type='checkbox'][id^='effect-']:checked + label {
-  background-color: #1c8c1c; /* Green background when checked */
-  color: #FFFFFF; /* White text when checked */
-}
-
-/* Checkbox hover styles */
-.option-item input[type='checkbox'] + label:hover {
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
-}
-
-.option-item input[type='checkbox'][id^='flavor-']:checked + label {
-  font-size: 24px;
-  padding: 16px 24px;
-  outline: 4px solid white;
-  border-radius: 20px;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-/* Type checkbox background colors */
-.option-item input[type='checkbox'][id='type-Hybrid'] + label {
-  background-color: #8fbc8f; /* Light green */
-}
-
-.option-item input[type='checkbox'][id='type-Indica'] + label {
-  background-color: #9370db; /* Light purple */
-}
-
-.option-item input[type='checkbox'][id='type-Sativa'] + label {
-  background-color: #ffa500; /* Orange */
-}
-
-.option-item input[type='checkbox'][id^='type-']:checked + label {
-  font-size: 24px;
-  padding: 16px 24px;
-  outline: 4px solid white;
-  border-radius: 20px;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.recommendation-button {
-  display: inline-block;
-  padding: 12px 20px;
-  border: 2px solid #000000;
-  border-radius: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: box-shadow 0.3s;
-  color: #1c8c1c;
-  background-color: #FFFFFF;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.recommendation-button:hover {
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
-}
-
-.top-strains {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.top-strains h2 {
-  font-size: 24px;
-  margin-bottom: 30px;
-}
-
-.top-strains ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.top-strains li {
-  font-size: 18px;
-  margin-bottom: 5px;
-}

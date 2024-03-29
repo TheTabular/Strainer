@@ -72,14 +72,14 @@ function App() {
   };
 
   useEffect(() => {
-    if (showTopStrains) {
+    if (topStrains.length > 0) {
       // Scroll to the bottom of the page when top strains are loaded
       window.scrollTo({
         top: document.documentElement.scrollHeight,
         behavior: 'smooth'
       });
     }
-  }, [showTopStrains]);
+  }, [topStrains]);
 
   return (
     <div className="app">

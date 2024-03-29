@@ -2,6 +2,8 @@ body {
   background-color: #559955;
   color: #fff;
   font-family: 'Helvetica Neue', sans-serif;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
 }
 
 .app {
@@ -154,6 +156,7 @@ label {
   font-size: 24px;
   padding: 16px 24px;
   outline: 4px solid white;
+  border-radius: 20px;
 }
 
 ul {
@@ -183,6 +186,7 @@ li {
   font-size: 24px;
   padding: 16px 24px;
   outline: 4px solid white;
+  border-radius: 20px;
 }
 
 .button-container {

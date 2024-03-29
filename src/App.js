@@ -81,10 +81,6 @@ function App() {
     }
   }, [showTopStrains]);
 
-  const handleHideRecommendations = () => {
-    setShowTopStrains(false);
-  };
-
   return (
     <div className="app">
       <h1>Strain Recommender</h1>
@@ -135,15 +131,9 @@ function App() {
         </div>
       </form>
       <div className="button-container">
-        {!showTopStrains ? (
-          <button type="button" className="recommendation-button" onClick={handleSubmit}>
-            Get Recommendations
-          </button>
-        ) : (
-          <button type="button" className="recommendation-button" onClick={handleHideRecommendations}>
-            Hide Recommendations
-          </button>
-        )}
+        <button type="button" className="recommendation-button" onClick={handleSubmit}>
+          Get Recommendations
+        </button>
       </div>
       {showTopStrains && (
         <div className="top-strains">

@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './App.css';
 
 function App() {
   const [selectedEffects, setSelectedEffects] = useState([]);
   const [selectedFlavors, setSelectedFlavors] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState([]);
-  const [description, setDescription] = useState('');
   const [topStrains, setTopStrains] = useState([]);
+  const [showTopStrains, setShowTopStrains] = useState(false);
 
   const effects = [
     'Aroused', 'Creative', 'Dry', 'Energetic', 'Euphoric', 'Focused', 'Giggly',
@@ -61,13 +62,27 @@ function App() {
       const response = await axios.post('https://api.strainer.wiki/recommend', {
         effects: selectedEffects,
         flavors: selectedFlavors,
-        types: selectedTypes,
-        description: description,
+        types: selectedTypes
       });
-      setTopStrains(response.data.top_strains);
+      setTopStrains(response.data.top_strains.slice(0, 5)); // Get the top 5 strains
+      setShowTopStrains(true);
     } catch (error) {
       console.error('Error:', error);
     }
+  };
+
+  useEffect(() => {
+    if (showTopStrains) {
+      // Scroll to the bottom of the page when top strains are loaded
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  }, [showTopStrains]);
+
+  const handleHideRecommendations = () => {
+    setShowTopStrains(false);
   };
 
   return (
@@ -76,7 +91,21 @@ function App() {
       <form onSubmit={handleSubmit}>
         <div className="options-container">
           <div className="option-group">
-            <label>Effects:</label>
+            <label className="option-header">Type</label>
+            {types.map((type) => (
+              <div key={type} className="option-item">
+                <input
+                  type="checkbox"
+                  id={`type-${type}`}
+                  checked={selectedTypes.includes(type)}
+                  onChange={() => handleTypeChange(type)}
+                />
+                <label htmlFor={`type-${type}`}>{type}</label>
+              </div>
+            ))}
+          </div>
+          <div className="option-group">
+            <label className="option-header">Effects</label>
             {effects.map((effect) => (
               <div key={effect} className="option-item">
                 <input
@@ -90,7 +119,7 @@ function App() {
             ))}
           </div>
           <div className="option-group">
-            <label>Flavors:</label>
+            <label className="option-header">Flavors</label>
             {flavors.map((flavor) => (
               <div key={flavor} className="option-item">
                 <input
@@ -103,30 +132,22 @@ function App() {
               </div>
             ))}
           </div>
-          <div className="option-group">
-            <label>Type:</label>
-            {types.map((type) => (
-              <div key={type} className="option-item">
-                <input
-                  type="checkbox"
-                  id={`type-${type}`}
-                  checked={selectedTypes.includes(type)}
-                  onChange={() => handleTypeChange(type)}
-                />
-                <label htmlFor={`type-${type}`}>{type}</label>
-              </div>
-            ))}
-          </div>
         </div>
-        <div>
-          <label>Description:</label>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-        </div>
-        <button type="submit">Get Recommendations</button>
       </form>
-      {topStrains.length > 0 && (
-        <div>
-          <h3>Top Recommended Strains:</h3>
+      <div className="button-container">
+        {!showTopStrains ? (
+          <button type="button" className="recommendation-button" onClick={handleSubmit}>
+            Get Recommendations
+          </button>
+        ) : (
+          <button type="button" className="recommendation-button" onClick={handleHideRecommendations}>
+            Hide Recommendations
+          </button>
+        )}
+      </div>
+      {showTopStrains && (
+        <div className="top-strains">
+          <h2>Top 5 Recommended Strains</h2>
           <ul>
             {topStrains.map((strain, index) => (
               <li key={index}>{strain}</li>

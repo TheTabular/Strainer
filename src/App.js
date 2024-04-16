@@ -59,7 +59,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://api.strainer.wiki/recommend', {
+      const response = await axios.post('http://strainer-env.eba-7qvtienz.us-east-1.elasticbeanstalk.com/recommend', {
         effects: selectedEffects,
         flavors: selectedFlavors,
         types: selectedTypes
